@@ -31,14 +31,14 @@ Customizable blazor-component with one or two handles respectively minimum and/o
 | `EndValue` | `int` | defines the value and position of the ***right handle*** within MinValue and MaxValue <br>Databinding is possible eg. @bind-EndValue="EndValue1" |
 | `UseDefaultHandleSvg` | `bool` | if true, the default handels with arrows are used |
 | `Step` | `int` | defines the step of possible values.   |
+| `HandlePosition` | `EnHandlePosition` | defines the position of the handle relative to the selected value. Possible values are outside  middle inside |
+| `SliderType` | `EnSliderType` | Range, SingleStartMin, SingleStartMax   |
 | `UseDefaultHandleSvgColor` | `string` | color of the default handels if UseDefaultHandleSvg=true.  |
 | `UseDefaultHandleSvgHeight` | `int` | height of default handels in pixel (width is calculated) if UseDefaultHandleSvg=true.  |
 | `UpdateMillisecond` | `int` | defines the time in which the StartValue end EndValue is updated when user stops moveing the slider without MouseUp |
 | `ColorsAndDimensions` | `ColorsAndDimensions` | defines the basic appearance of the slider => ColorsAndDimensions below |
 | `HandleStart` | `HandleDefinition` | defines the  appearance of the left handle => HandleDefinition below |
 | `HandleEnd` | `HandleDefinition` | defines the  appearance of the right handle => HandleDefinition below |
-| `HandlePosition` | `EnHandlePosition` | defines the position of the handle relative to the selected value. Possible values are outside  middle inside |
-
 
 
 ## ColorsAndDimensions
