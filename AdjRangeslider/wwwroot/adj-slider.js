@@ -86,10 +86,10 @@ export async function initDraggableWithinBounds(
 
     o.isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
     o.isUsesTouchDevice = false;
-    // isMobileDevice = true;
+    
     o.offsetX;
 
-    //alert('isMobileDevic4e: ' + isMobileDevice);
+    
     document.addEventListener('mousemove', o.handleMove);
     document.addEventListener('vmousemove', o.handleMove);
     document.addEventListener('mouseup', o.handleMouseUp)
@@ -140,7 +140,7 @@ export async function initDraggableWithinBounds(
             o.isDraggingHasMoved = false;
 
             o.offsetXBg= o.getClientX(e) - o.oHtm.childRangeBg.getBoundingClientRect().left;
-            //o.draggingElement = o.oHtm.childRangeBg;
+            
 
             
             var offsetStart = o.oHtm.childStart.getBoundingClientRect().left - o.oParentX;
@@ -184,13 +184,13 @@ export async function initDraggableWithinBounds(
                     if (clickPos > o.oClientEndLeft && o.isHandleRight) {
                         o.isDraggingEnd = true;
                         o.oClientEndLeft = clickPos;
-                        o.oEndXClick = o.offsetX - o.rangeRightAdjustment;//  Math.min(o.getClientX(e) - o.oParentX - o.rangeRightAdjustment, o.oMaxXEnd)
+                        o.oEndXClick = o.offsetX - o.rangeRightAdjustment;
                         o.handleMove(e);
                     }
                     else if (clickPos < o.oClientStartLeft && o.isHandleLeft) {
                         o.isDraggingStart = true;
                         o.oClientStartLeft = clickPos;
-                        o.oStartXClick = o.offsetX;// - o.rangeRightAdjustment; //Math.max(0, o.getClientX(e) - o.oParentX - o.oHtm.childStart.offsetWidth + o.rangeLeftAdjustment);
+                        o.oStartXClick = o.offsetX;
                         o.handleMove(e);
                     }
                 } else if (o.isDraggingRange) {
@@ -198,7 +198,7 @@ export async function initDraggableWithinBounds(
                     var xx = o.oClientStartLeft + ((o.oClientEndLeft - o.oClientStartLeft) / 2);
                     if ((clickPos > xx && o.isHandleLeftAndRight) || (o.isHandleRight && !o.isHandleLeft)) {
                         o.isDraggingEnd = true;
-                        o.oEndXClick = clickPos - o.oClientStartLeft - o.oHtm.childStart.offsetWidth;;// + o.rangeRightAdjustment;
+                        o.oEndXClick = clickPos - o.oClientStartLeft - o.oHtm.childStart.offsetWidth;
                         o.handleMove(e);
                     } else {
                         o.isDraggingStart = true;
@@ -253,13 +253,13 @@ export async function initDraggableWithinBounds(
         o.floatString = function (n) { return Number.isInteger(n) ? n.toFixed(1) : n.toString(); }
 
         o.setStartPosition = function () {
-            var x = 0;// isHandleMiddle ? o.oHtm.childStart.offsetWidth/2 : 0;
+            var x = 0;
             o.oHtm.childStart.style.left = (o.oClientStartLeft + x) + 'px';
             o.oStartPercent = o.getPercentByVal(o.oClientStartLeft, 0, o.oMaxXStart);
         }
         o.setEndPosition = function () {
 
-            var x = 0;//isHandleMiddle ? o.oHtm.childEnd.offsetWidth / 2 : 0;
+            var x = 0;
             o.oHtm.childEnd.style.left = (o.oClientEndLeft - x) + 'px';
             o.oEndPercent = o.getPercentByVal(o.oClientEndLeft - o.oHtm.childStart.offsetWidth, 0, o.oMaxXStart);
         }
@@ -288,7 +288,7 @@ export async function initDraggableWithinBounds(
             } else {
                 return touchStartClientX;
             }
-            //return e.clientX == undefined ? e.touches[0].clientX : e.clientX;        
+            
         }
 
         o.initMoveRects = function (e) {
@@ -311,10 +311,10 @@ export async function initDraggableWithinBounds(
             var end1 = o.oClientEndLeft + offset;
             var diff = end1 - start1;
 
-            var outsideRange = end1 > o.oMaxXEnd;// - o.oHtm.childStart.offsetWidth;
+            var outsideRange = end1 > o.oMaxXEnd;
 
             if (outsideRange) {
-                end1 = o.oMaxXEnd;// - o.oHtm.childStart.offsetWidth;
+                end1 = o.oMaxXEnd;
                 start1 = end1 - diff;
             }
 
@@ -398,8 +398,7 @@ export async function initDraggableWithinBounds(
                 o.oHtm.childRangeBgDiv.style.marginRight = '0';
                 o.oHtm.childRangeBgDiv.style.width = 'auto';
 
-                //oHtm.childStart.style.marginLeft = '' + (o.oHtm.childStart.offsetWidth ) + 'px';
-                //oHtm.childEnd.style.marginLeft = '-' + (o.oHtm.childEnd.offsetWidth ) + 'px';
+                
             }
 
 
@@ -415,8 +414,8 @@ export async function initDraggableWithinBounds(
             x = o.isHandleInside && false ? (o.oHtm.childStart.offsetWidth + o.oHtm.childEnd.offsetWidth) : x;
             x1 = o.isHandleInside && false ? o.oHtm.childStart.offsetWidth : x1;
 
-            var rangeWidth = o.oClientEndLeft - o.oClientStartLeft - o.oHtm.childStart.offsetWidth - x;// + 2;
-            var rangeLeft = o.oClientStartLeft + o.oHtm.childStart.offsetWidth + x1;// - 1;
+            var rangeWidth = o.oClientEndLeft - o.oClientStartLeft - o.oHtm.childStart.offsetWidth - x;
+            var rangeLeft = o.oClientStartLeft + o.oHtm.childStart.offsetWidth + x1;
 
 
             rangeWidth += o.rangeLeftAdjustment + o.rangeRightAdjustment;
@@ -469,9 +468,7 @@ export async function updateRange(dotNetObj, parentSelector, startValue, endValu
     if (start > end) end = start;
     if (oldStartValue == start && oldEndValue == end) return;
 
-    updateRangeWithAnimation(start, end, oldStartValue, oldEndValue);
-
-    //dotNetObj.invokeMethodAsync("OnMouseMoveCallback", o.floatString(o.oStartValue), o.floatString(o.oEndValue));
+    updateRangeWithAnimation(start, end, oldStartValue, oldEndValue);    
 
     function updateRangeWithAnimation(startValue, endValue, oldStartValue, oldEndValue) {
         var steps = 10;
@@ -500,21 +497,20 @@ export async function updateRange(dotNetObj, parentSelector, startValue, endValu
         o.initPositions();
 
         if (invokeMouseUp) dotNetObj.invokeMethodAsync("OnMouseMoveCallback", o.floatString(o.oStartValue), o.floatString(o.oEndValue));
-        //if (invokeMouseUp)  o.dotNetObj.invokeMethodAsync("OnMouseUpCallback", o.floatString(o.oStartValue), o.floatString(o.oEndValue));
     }
 
 }
 
 var _loadedCss = [];
 export async function loadCss(href) {           
-    // only load script once
+    
     if (_loadedCss[href]) return Promise.resolve();
     return new Promise(function (resolve, reject) {
         let tag = document.createElement('link');
         tag.rel = 'stylesheet';
         tag.href = href;
 
-        // mark script as loading/loaded
+        
         _loadedCss[href] = true;
 
         tag.onload = function () {

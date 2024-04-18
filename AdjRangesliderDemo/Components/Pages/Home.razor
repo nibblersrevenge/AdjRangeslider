@@ -1,7 +1,268 @@
 ﻿@page "/"
+@using AdjRangeSlider
 
-<PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+<div style="margin:50px 0;">
+    <div class="container">
+        <div class="row">
+        </div>
+        <div class="row">
+
+            <div div class=" col-lg-6">
+                <div class="border border-primary rounded m-2">
+                    <div class="p-2">
+                        <b>Slider1 Handle outside</b>
+                        <br />Min-Max:  <b>@MinValue1 - @MaxValue1</b> Step: <b>@Step1</b>, Update: <b>@UpdateMillisecond ms</b>
+                        <br />Preview:  <b>@position1.Start - @position1.End  <a @onclick="() => { StartValue1 = StartValue2; EndValue1 = EndValue2; }" style="font-weight:normal;cursor:pointer;text-decoration:underline;color:blue">Copy from Slider2</a></b>
+                        <br />Start-End: <b>@StartValue1 - @EndValue1 <a @onclick="() => { StartValue2 = StartValue1; }" style="font-weight:normal;cursor:pointer;text-decoration:underline;color:blue">Copy StartValue to Slider2</a></b>
+                    </div>
+                    <AdjRangeSlider MinValue="MinValue1"
+                                    MaxValue="MaxValue1"
+                                    Step="Step1"
+                                    @bind-StartValue="StartValue1"
+                                    @bind-EndValue="EndValue1"
+                                    UpdateMillisecond="UpdateMillisecond"
+                                    OnMouseMove="OnMouseMove1"
+                                    OnValuesChanged="OnValueChanged1"
+                                    UseDefaultHandleSvg="true"
+                                    HandlePosition="AdjRangeSlider.EnHandlePosition.Outside" />
+
+                </div>
+
+            </div><div div class=" col-lg-6">
+                <div class="border border-primary rounded m-2">
+                    <div class="p-2">
+                        <b>Slider2 Handle middle </b>
+                        <br />Min-Max:  <b>@MinValue2 - @MaxValue2</b> Step: <b>@Step2</b>, Update: <b>@UpdateMillisecond ms</b>
+                        <br />Preview:  <b>@position2.Start - @position2.End</b>
+                        <br />Start-End: <b>@StartValue2 - @EndValue2</b>
+                    </div>
+                    <AdjRangeSlider StartValue="StartValue2"
+                                    EndValue="EndValue2"
+                                    MinValue="MinValue2"
+                                    MaxValue="MaxValue2"
+                                    Step="Step2"
+                                    UseDefaultHandleSvg="true"
+                                    OnMouseMove="OnMouseMove2"
+                                    OnValuesChanged="OnValueChanged2"
+                                    HandlePosition="AdjRangeSlider.EnHandlePosition.Middle" />
+
+                </div>
+            </div><div div class=" col-lg-6">
+                <div class="border border-primary rounded m-2">
+
+                    <div class="p-2">
+                        <b>Slider3 Handle inside</b>
+
+                        <br />Min-Max:  <b>@MinValue3 - @MaxValue3</b> Step: <b>@Step3</b>, Update: <b>@UpdateMillisecond ms</b>
+                        <br />Preview:  <b>@position3.Start - @position3.End</b>
+                        <br />Start-End: <b>@StartValue3 - @EndValue3</b>
+                    </div>
+                    <AdjRangeSlider MinValue="MinValue3"
+                                    MaxValue="MaxValue3"
+                                    StartValue="StartValue3"
+                                    EndValue="EndValue3"
+                                    Step="Step3"
+                                    UpdateMillisecond="UpdateMillisecond"
+                                    OnMouseMove="OnMouseMove3"
+                                    OnValuesChanged="OnValueChanged3"
+                                    UseDefaultHandleSvg="true"
+                                    HandlePosition="AdjRangeSlider.EnHandlePosition.Inside" />
+
+
+                </div>
+            </div>
+
+
+            <div div class=" col-lg-6">
+                <div class="border border-primary rounded m-2">
+
+                    <div class="p-2">
+                        <b>Slider4 Custom handles</b>
+                        <br />Min-Max:  <b>@MinValue4 - @MaxValue4</b> Step: <b>@Step4</b>, Update: <b>@UpdateMillisecond ms</b>
+                        <br />Preview:  <b>@position4.Start - @position4.End</b>
+                        <br />Start-End: <b>@StartValue4 - @EndValue4</b>
+                    </div>
+                    <AdjRangeSlider StartValue="StartValue4"
+                                    EndValue="EndValue4"
+                                    MinValue="MinValue4"
+                                    MaxValue="MaxValue4"
+                                    Step="Step4"
+                                    UpdateMillisecond="UpdateMillisecond"
+                                    OnMouseMove="OnMouseMove4"
+                                    OnValuesChanged="OnValueChanged4"
+                                    HandleEnd="@(new HandleDefinition(
+                                    widthInPx:  33,
+                                    heightInPx:33,
+                                    backgroundUrl:"https://www.motorradtest.de/images/avatar/50/chris.webp",
+                                    backgroundColor:"#fee",
+                                    borderRadius :"33%",
+                                    borderWidthInPx:1.5,borderColor:"#999"))"
+                                    HandleStart="@(new HandleDefinition(
+                                    widthInPx:23,
+                                    heightInPx:13,
+                                    backgroundColor:"#0ff",
+                                    borderRadius:"33%",
+                                    borderWidthInPx:2.5,
+                                    borderColor:"#f00"))" />
+
+
+                </div>
+            </div><div div class=" col-lg-6">
+                <div class="border border-primary rounded m-2">
+
+                    <div class="p-2">
+                        <b>Slider5 Only Startvalue</b>
+                        <br />Min-Max:  <b>@MinValue5 - @MaxValue5</b> Step: <b>@Step5</b>, Update: <b>@UpdateMillisecond ms</b>
+                        <br />Preview:  <b>@position5.Start</b>
+                        <br />Start: <b>@StartValue5 </b>
+                    </div>
+                    <AdjRangeSlider MinValue="MinValue5"
+                                    MaxValue="MaxValue5"
+                                    StartValue="StartValue5"
+                                    Step="Step5"
+                                    SliderType="AdjRangeSlider.EnSliderType.SingleStartMin"
+                                    OnMouseMove="OnMouseMove5"
+                                    OnValuesChanged="OnValueChanged5" />
+                </div>
+            </div>
+            <div div class=" col-lg-6">
+                <div class="border border-primary rounded m-2">
+
+                    <div class="p-2">
+                        <b>Slider6 Only Endvalue</b>
+                        <br />Min-Max:  <b>@MinValue6 - @MaxValue6</b> Step: <b>@Step6</b>, Update: <b>@UpdateMillisecond ms</b>
+                        <br />Preview:  <b>@position6.End</b>
+                        <br />End: <b>@@EndValue6</b>
+
+                    </div>
+                    <AdjRangeSlider MinValue="MinValue6"
+                                    MaxValue="MaxValue6"
+                                    EndValue="EndValue6"
+                                    Step="Step5"
+                                    OnMouseMove="OnMouseMove6"
+                                    OnValuesChanged="OnValueChanged6"
+                                    SliderType="AdjRangeSlider.EnSliderType.SingleStartMax" />
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+@code {
+
+    int Step { get; set; } = 1;
+
+    int StartValue1 { get; set; } = 200;
+    int EndValue1 { get; set; } = 800;
+    int MinValue1 { get; set; } = 0;
+    int MaxValue1 { get; set; } = 1000;
+    int Step1 { get; set; } = 1;
+
+    int StartValue2 { get; set; } = 500;
+    int EndValue2 { get; set; } = 600;
+    int MinValue2 { get; set; } = 0;
+    int MaxValue2 { get; set; } = 1000;
+    int Step2 { get; set; } = 10;
+
+    int StartValue3 { get; set; } = 2000;
+    int EndValue3 { get; set; } = 8000;
+    int MinValue3 { get; set; } = 0;
+    int MaxValue3 { get; set; } = 10000;
+    int Step3 { get; set; } = 100;
+
+    int StartValue4 { get; set; } = 120;
+    int EndValue4 { get; set; } = 980;
+    int MinValue4 { get; set; } = 0;
+    int MaxValue4 { get; set; } = 1024;
+    int Step4 { get; set; } = 12;
+
+    int StartValue5 { get; set; } = 200;
+    int MinValue5 { get; set; } = 0;
+    int MaxValue5 { get; set; } = 1000;
+    int Step5 { get; set; } = 10;
+
+
+    int EndValue6 { get; set; } = 200;
+    int MinValue6 { get; set; } = 0;
+    int MaxValue6 { get; set; } = 1000;
+    int Step6 { get; set; } = 10;
+
+
+    int UpdateMillisecond { get; set; } = 500;
+    EventCallback<int[]> ValueChanged { get; set; }
+
+
+    AdjRangeSlider.Position position1 { get; set; } = new AdjRangeSlider.Position();
+    AdjRangeSlider.Position position2 { get; set; } = new AdjRangeSlider.Position();
+    AdjRangeSlider.Position position3 { get; set; } = new AdjRangeSlider.Position();
+    AdjRangeSlider.Position position4 { get; set; } = new AdjRangeSlider.Position();
+    AdjRangeSlider.Position position5 { get; set; } = new AdjRangeSlider.Position();
+    AdjRangeSlider.Position position6 { get; set; } = new AdjRangeSlider.Position();
+
+    private void OnMouseMove1(AdjRangeSlider.Position args) => position1 = args;
+    private void OnMouseMove2(AdjRangeSlider.Position args) => position2 = args;
+    private void OnMouseMove3(AdjRangeSlider.Position args) => position3 = args;
+    private void OnMouseMove4(AdjRangeSlider.Position args) => position4 = args;
+    private void OnMouseMove5(AdjRangeSlider.Position args) => position5 = args;
+    private void OnMouseMove6(AdjRangeSlider.Position args) => position6 = args;
+
+
+
+    private void OnValueChanged1(AdjRangeSlider.Position args)
+    {
+        StartValue1 = (int)args.Start;
+        EndValue1 = (int)args.End;
+    }
+    private void OnValueChanged2(AdjRangeSlider.Position args)
+    {
+        StartValue2 = (int)args.Start;
+        EndValue2 = (int)args.End;
+    }
+
+    private void OnValueChanged3(AdjRangeSlider.Position args)
+    {
+        StartValue3 = (int)args.Start;
+        EndValue3 = (int)args.End;
+    }
+
+    private void OnValueChanged4(AdjRangeSlider.Position args)
+    {
+        StartValue4 = (int)args.Start;
+        EndValue4 = (int)args.End;
+    }
+
+    private void OnValueChanged5(AdjRangeSlider.Position args)
+    {
+        StartValue5 = (int)args.Start;
+    }
+
+    private void OnValueChanged6(AdjRangeSlider.Position args)
+    {
+        EndValue6 = (int)args.End;
+    }
+
+
+    protected override void OnInitialized()
+    {
+        position1.Start = (double)StartValue1;
+        position1.End = (double)EndValue1;
+
+        position2.Start = (double)StartValue2;
+        position2.End = (double)EndValue2;
+
+        position3.Start = (double)StartValue3;
+        position3.End = (double)EndValue3;
+        position4.Start = (double)StartValue4;
+        position4.End = (double)EndValue4;
+
+        position5.Start = (double)StartValue5;
+
+
+        position6.End = (double)EndValue6;
+    }
+}

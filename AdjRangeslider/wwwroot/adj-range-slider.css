@@ -1,6 +1,6 @@
 :root {
     /*slider*/
-    --adj-slider-bg: yellow;
+    --adj-slider-bg: unset;
     /*range*/
     --adj-range-bg-color: #eee;
     --adj-range-bg-height: 4px;
@@ -10,7 +10,7 @@
     --adj-handle-range-hover-color: #0000000f;
     /*start*/
     --adj-handle-start-height: 15px;
-    --adj-handle-start-width: 45px;
+    --adj-handle-start-width: 15px;
     --adj-handle-start-bg: #c10000;
     --adj-handle-start-border-style: solid;
     --adj-handle-start-border-width: 0;
@@ -18,7 +18,7 @@
     --adj-handle-start-border-radius: 0;
     /*end*/
     --adj-handle-end-height: 15px;
-    --adj-handle-end-width: 45px;
+    --adj-handle-end-width: 15px;
     --adj-handle-end-bg: #c10000;
     --adj-handle-end-border-style: solid;
     --adj-handle-end-border-width: 0;
@@ -61,7 +61,6 @@
 
     .adj-slider-handle.adj-end {
         width: var(--adj-handle-end-width);
-        transform: var(--adj-handle-end-transform);
         height: var(--adj-handle-end-height);
         left: calc(100% - var(--adj-handle-end-width));
         background: var(--adj-handle-end-bg);
@@ -71,8 +70,6 @@
         border-color: var(--adj-handle-end-border-color);
         border-style: var(--adj-handle-end-border-style);
     }
-
-border: var(--adj-handle-start-bordert);
 
 .adj-slider.adj-slider-hide-start .adj-start,
 .adj-slider.adj-slider-hide-end .adj-end {

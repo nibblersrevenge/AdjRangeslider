@@ -15,10 +15,6 @@
     <FileVersion>0.8.0.0</FileVersion>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="AdjRangeSlider - Copy.razor" />
-    <Content Remove="wwwroot\AdjRangeSlider.razor" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\adj-range-slider.css" />

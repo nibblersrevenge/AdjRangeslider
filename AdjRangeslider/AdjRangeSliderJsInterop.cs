@@ -1,6 +1,6 @@
 using Microsoft.JSInterop;
 
-namespace AdjRangeslider;
+namespace AdjRangeSlider;
 
 public class AdjRangeSliderJsInterop : IAsyncDisposable
 {

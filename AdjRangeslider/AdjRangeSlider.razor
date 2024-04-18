@@ -14,10 +14,9 @@
     [Parameter] public int UpdateMillisecond { get; set; } = 222;
     [Parameter] public bool InitFullrange { get; set; } = false;
     [Parameter] public int? Step { get; set; } = 1;
-    [Parameter] public int MinValue { get; set; } = 200;   
+    [Parameter] public int MinValue { get; set; } = 200;
     [Parameter] public int MaxValue { get; set; } = 800;
 
-    [Parameter] public int StartValue { get => startValue; set => startValue = value; }
 
     [Parameter] public HandleDefinition? HandleStart { get; set; }
     [Parameter] public HandleDefinition? HandleEnd { get; set; }
@@ -30,9 +29,10 @@
 
 
 
-    [Parameter] public EventCallback<int> OnStartValueChanged { get; set; }
+    [Parameter] public EventCallback<int> StartValueChanged { get; set; }
+    [Parameter] public EventCallback<int> EndValueChanged { get; set; }
+    [Parameter] public int StartValue { get; set; }
     [Parameter] public int EndValue { get; set; } = 600;
-    [Parameter] public EventCallback<int> OnEndValueChanged { get; set; }
 
 
     [Parameter] public EventCallback<Position> OnValuesChanged { get; set; }
@@ -144,8 +144,8 @@
 
     async Task invokeValuesChanged()
     {
-        await OnStartValueChanged.InvokeAsync(StartValue);
-        await OnEndValueChanged.InvokeAsync(EndValue);
+        await StartValueChanged.InvokeAsync(StartValue);
+        await EndValueChanged.InvokeAsync(EndValue);
     }
 
     protected override async Task OnInitializedAsync()
@@ -171,8 +171,8 @@
         /*check Start End*/
         if (StartValue > EndValue) { StartValue = EndValue; isChangedStart = true; }
 
-        if (isChangedStart) await OnStartValueChanged.InvokeAsync(StartValue);
-        if (isChangedEnd) await OnEndValueChanged.InvokeAsync(EndValue);
+        if (isChangedStart) await StartValueChanged.InvokeAsync(StartValue);
+        if (isChangedEnd) await EndValueChanged.InvokeAsync(EndValue);
 
         if (isChangedStart || isChangedEnd)
         {
@@ -196,12 +196,12 @@
 
         if (StartValue != previousStartValue)
         {
-            await OnStartValueChanged.InvokeAsync(StartValue);
+            await StartValueChanged.InvokeAsync(StartValue);
             isChanged = true;
         }
         if (EndValue != previousEndValue)
         {
-            await OnEndValueChanged.InvokeAsync(EndValue);
+            await EndValueChanged.InvokeAsync(EndValue);
             isChanged = true;
         }
         previousStartValue = StartValue;
@@ -239,9 +239,10 @@
     {
         if (firstRender && _interop != null)
         {
-            UseDefaultHandleSvg??=true;
+            UseDefaultHandleSvg ??= true;
 
-            if (UseDefaultHandleSvg==true)  {
+            if (UseDefaultHandleSvg == true)
+            {
                 HandleStart ??= new HandleDefinition(useDefaultIcons: true, heightInPx: UseDefaultHandleSvgHeight, color: UseDefaultHandleSvgColor);
                 HandleEnd ??= new HandleDefinition(useDefaultIcons: true, heightInPx: UseDefaultHandleSvgHeight, color: UseDefaultHandleSvgColor);
             }
@@ -297,7 +298,7 @@
     }
 
 
-    public struct Position
+    public record Position
     {
         public bool IsMouseUp;
         public double Start;
