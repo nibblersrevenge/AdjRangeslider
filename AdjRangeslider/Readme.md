@@ -3,11 +3,11 @@
 
 Customizable blazor-component with one or two handles respectively minimum and/or maximum value.
 
-![Range Slider Demo](RangeSliderDemo1.gif)
+![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangeSliderDemo1.gif)
 <br><br>
-![Range Slider Demo](RangesliderDemoExclude.gif)
+![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangesliderDemoExclude.gif)
 <br><br>
-![Range Slider Demo](RangesliderDemoDatabinding1.gif)
+![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangesliderDemoDatabinding1.gif)
 <br><br>
 
 ## Features

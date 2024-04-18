@@ -15,7 +15,9 @@
     <FileVersion>0.8.0.0</FileVersion>
   </PropertyGroup>
 
-
+	<PropertyGroup>
+		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+	</PropertyGroup>
   <ItemGroup>
     <None Include="wwwroot\adj-range-slider.css" />
   </ItemGroup>
