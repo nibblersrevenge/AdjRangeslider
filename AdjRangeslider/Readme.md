@@ -1,12 +1,14 @@
-﻿
+
 # Adj-Blazor-Range-Slider
 
 Customizable blazor-component with one or two handles respectively minimum and/or maximum value.
 
-![Range Slider Demo](https://www.motorradtest.de/userfiles/github/rangesliderdemo1.gif)
-![Range Slider Demo](https://www.motorradtest.de/userfiles/github/RangesliderDemoExclude.gif)
-![Range Slider Demo](https://www.motorradtest.de/userfiles/github/RangesliderDemoDatabinding1.gif)
-
+![Range Slider Demo](AdjRangeslider/RangeSliderDemo1.gif)
+<br><br>
+![Range Slider Demo](AdjRangeslider/RangesliderDemoExclude.gif)
+<br><br>
+![Range Slider Demo](AdjRangeslider/RangesliderDemoDatabinding1.gif)
+<br><br>
 
 ## Features
 
