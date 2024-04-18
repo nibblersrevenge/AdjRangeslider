@@ -1,0 +1,133 @@
+:root {
+    /*slider*/
+    --adj-slider-bg: yellow;
+    /*range*/
+    --adj-range-bg-color: #eee;
+    --adj-range-bg-height: 4px;
+    --adj-range-selected-height: 4px;
+    --adj-range-selected-margin-left: 0;
+    --adj-range-selected-color: lightBlue;
+    --adj-handle-range-hover-color: #0000000f;
+    /*start*/
+    --adj-handle-start-height: 15px;
+    --adj-handle-start-width: 45px;
+    --adj-handle-start-bg: #c10000;
+    --adj-handle-start-border-style: solid;
+    --adj-handle-start-border-width: 0;
+    --adj-handle-start-border-color: transparent;
+    --adj-handle-start-border-radius: 0;
+    /*end*/
+    --adj-handle-end-height: 15px;
+    --adj-handle-end-width: 45px;
+    --adj-handle-end-bg: #c10000;
+    --adj-handle-end-border-style: solid;
+    --adj-handle-end-border-width: 0;
+    --adj-handle-end-border-color: transparent;
+    --adj-handle-end-border-radius: 0;
+    --adj-slider-height: max(var(--adj-handle-start-height),var(--adj-handle-end-height));
+}
+
+/*SVG-Editor 
+    https://yqnn.github.io/svg-path-editor/*/
+
+.adj-slider {
+    --temp-height: max(var(--adj-handle-start-height), var(--adj-handle-end-height));
+    width: 100%;
+    height: var(--temp-height);
+    background: var(--adj-slider-bg);
+    position: relative;
+    width: 100%;
+}
+
+.adj-slider-handle {
+    position: absolute;
+    background-color: var(--mt-color);
+    user-select: none;
+    z-index: 4;
+    cursor: pointer;
+}
+
+    .adj-slider-handle.adj-start {
+        width: var(--adj-handle-start-width);
+        height: var(--adj-handle-start-height);
+        background: var(--adj-handle-start-bg);
+        background-size: contain;
+        left: 0;
+        border-radius: var(--adj-handle-start-border-radius);
+        border-width: var(--adj-handle-start-border-width);
+        border-color: var(--adj-handle-start-border-color);
+        border-style: var(--adj-handle-start-border-style);
+    }
+
+    .adj-slider-handle.adj-end {
+        width: var(--adj-handle-end-width);
+        transform: var(--adj-handle-end-transform);
+        height: var(--adj-handle-end-height);
+        left: calc(100% - var(--adj-handle-end-width));
+        background: var(--adj-handle-end-bg);
+        background-size: contain;
+        border-radius: var(--adj-handle-end-border-radius);
+        border-width: var(--adj-handle-end-border-width);
+        border-color: var(--adj-handle-end-border-color);
+        border-style: var(--adj-handle-end-border-style);
+    }
+
+border: var(--adj-handle-start-bordert);
+
+.adj-slider.adj-slider-hide-start .adj-start,
+.adj-slider.adj-slider-hide-end .adj-end {
+    width: 0px !important;
+}
+
+.adj-slider-handle.adj-range-bg {
+    --temp-height: max(var(--adj-handle-start-height), var(--adj-handle-end-height));
+    height: var(--temp-height);
+    width: 100%;
+    background-color: transparent;
+    z-index: 1;
+    /*margin-left: var(--thumb-width)*/
+}
+
+
+    .adj-slider-handle.adj-range-bg > div {
+        --temp-height: max(var(--adj-handle-start-height), var(--adj-handle-end-height));
+        margin: calc((var(--temp-height) - var(--adj-range-bg-height)) / 2 ) var(--adj-handle-end-width) 0 var(--adj-handle-start-width);
+        width: calc(100% - var(--adj-handle-end-width) - var(--adj-handle-start-width));
+        height: var(--adj-range-bg-height);
+        background-color: var(--adj-range-bg-color);
+        z-index: 2;
+        /*margin-left: var(--thumb-width)*/
+    }
+
+.adj-slider.adj-move-handle-inside .adj-slider-handle.adj-range-bg > div {
+    background-color: var(--adj-range-selected-color);
+}
+
+.adj-slider.adj-slider-range .adj-slider-handle.adj-range:hover {
+    background-color: var(--adj-handle-range-hover-color);
+}
+
+.adj-slider-handle.adj-range {
+    --temp-height: max(var(--adj-handle-start-height), var(--adj-handle-end-height));
+    height: var(--temp-height);
+    width: 100%;
+    background-color: transparent;
+    margin-top: 0;
+    z-index: 3;
+}
+
+    .adj-slider-handle.adj-range > div {
+        --temp-height: max(var(--adj-handle-start-height), var(--adj-handle-end-height));
+        margin-left: var(--adj-range-selected-margin-left);
+        margin-top: calc((var(--temp-height) - var(--adj-range-selected-height)) / 2 );
+        height: var(--adj-range-selected-height);
+        position: absolute;
+        top: calc(var(--thumb-height) / 2 - 1.5px);
+        width: 100%;
+        background-color: var(--adj-range-selected-color);
+    }
+
+
+.adj-slider.adj-move-handle-inside .adj-slider-handle.adj-range > div {
+    background-color: var(--adj-range-bg-color);
+}

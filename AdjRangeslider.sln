@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34814.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdjRangesliderDemo", "AdjRangesliderDemo\AdjRangesliderDemo.csproj", "{0B4F5783-D326-46EC-9BE8-3B5BB09260CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdjRangeslider", "AdjRangeslider\AdjRangeslider.csproj", "{CEC04F5A-6B85-46D7-AE31-9335EC7653BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B4F5783-D326-46EC-9BE8-3B5BB09260CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4F5783-D326-46EC-9BE8-3B5BB09260CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4F5783-D326-46EC-9BE8-3B5BB09260CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4F5783-D326-46EC-9BE8-3B5BB09260CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEC04F5A-6B85-46D7-AE31-9335EC7653BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEC04F5A-6B85-46D7-AE31-9335EC7653BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEC04F5A-6B85-46D7-AE31-9335EC7653BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEC04F5A-6B85-46D7-AE31-9335EC7653BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51459BB6-B037-4F48-8DC5-55660959BF62}
+	EndGlobalSection
+EndGlobal

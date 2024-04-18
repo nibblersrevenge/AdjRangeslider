@@ -1,0 +1,331 @@
+﻿@using Microsoft.JSInterop;
+@inject IJSRuntime _js
+
+<div class="@GetCssClass()" id="@id" style="position:relative!important">
+    <div class="adj-slider-handle adj-start"><div></div></div>
+    <div class="adj-slider-handle adj-range"><div></div></div>
+    <div class="adj-slider-handle adj-range-bg"><div></div></div>
+    <div class="adj-slider-handle adj-end"><div></div></div>
+</div>
+<br />
+
+
+@code {
+    [Parameter] public int UpdateMillisecond { get; set; } = 222;
+    [Parameter] public bool InitFullrange { get; set; } = false;
+    [Parameter] public int? Step { get; set; } = 1;
+    [Parameter] public int MinValue { get; set; } = 200;   
+    [Parameter] public int MaxValue { get; set; } = 800;
+
+    [Parameter] public int StartValue { get => startValue; set => startValue = value; }
+
+    [Parameter] public HandleDefinition? HandleStart { get; set; }
+    [Parameter] public HandleDefinition? HandleEnd { get; set; }
+    [Parameter] public ColorsAndDimensions? ColorsAndDimensions { get; set; }
+
+    [Parameter] public bool? UseDefaultHandleSvg { get; set; } = true;
+    [Parameter] public string? UseDefaultHandleSvgColor { get; set; } = "#c10000";
+    [Parameter] public int UseDefaultHandleSvgHeight { get; set; } = 24;
+
+
+
+
+    [Parameter] public EventCallback<int> OnStartValueChanged { get; set; }
+    [Parameter] public int EndValue { get; set; } = 600;
+    [Parameter] public EventCallback<int> OnEndValueChanged { get; set; }
+
+
+    [Parameter] public EventCallback<Position> OnValuesChanged { get; set; }
+
+    [Parameter] public EventCallback<Position> OnMouseMove { get; set; }
+    [Parameter] public EventCallback<Position> OnMouseUp { get; set; }
+
+    [Parameter] public EnSliderType SliderType { get; set; } = EnSliderType.Range;
+    [Parameter] public EnHandlePosition HandlePosition { get; set; } = EnHandlePosition.Outside;
+
+    public async Task SetValues(int start, int end)
+    {
+        StartValue = start;
+        EndValue = end;
+        await OnParametersSetAsync();
+    }
+
+
+    string id = "adj-" + Guid.NewGuid().ToString().Replace("-", "");
+    AdjRangeSliderJsInterop _interop; DotNetObjectReference<AdjRangeSlider> _objRef;
+
+    bool isInitialized = false;
+    private int startValue = 0;
+    private int endValue = 100;
+    List<object> cssVarList = new();
+    private bool isHandleLeft { get => SliderType == EnSliderType.Range || SliderType == EnSliderType.SingleStartMin; }
+    private bool isHandleRight { get => SliderType == EnSliderType.Range || SliderType == EnSliderType.SingleStartMax; }
+
+
+    public string ParentSelector { get => $"#{id}"; }
+
+    string dblString(double val) => val.ToString("N2", System.Globalization.CultureInfo.InvariantCulture);
+
+    enum handleType
+    {
+        Start,
+        End,
+        Range
+    }
+
+    public enum EnSliderType
+    {
+        Range,
+        SingleStartMin,
+        SingleStartMax
+    }
+    public enum EnHandlePosition
+    {
+        Outside,
+        Middle,
+        Inside
+    }
+    string GetCssClass()
+    {
+        string ret = "adj-slider";
+        switch (SliderType)
+        {
+            case EnSliderType.Range:
+                ret += " adj-slider-range";
+                break;
+            case EnSliderType.SingleStartMin:
+                ret += " adj-slider-single adj-slider-hide-end";
+                break;
+            case EnSliderType.SingleStartMax:
+                ret += " adj-slider-single adj-slider-hide-start";
+                break;
+        }
+        switch (HandlePosition)
+        {
+            case EnHandlePosition.Outside:
+                ret += " adj-move-handle-outside";
+                break;
+            case EnHandlePosition.Middle:
+                ret += " adj-move-handle-middle";
+                break;
+            case EnHandlePosition.Inside:
+                ret += " adj-move-handle-inside";
+                break;
+        }
+
+
+        return ret;
+
+    }
+
+    Timer timer;
+    int[] lastValue = new int[2];
+    Position pos = new();
+    async void TimerCallbackMethod(object state)
+    {
+        StartValue = (int)pos.Start;
+        EndValue = (int)pos.End;
+        if (lastValue[0] != StartValue ||
+            lastValue[1] != EndValue)
+        {
+            await InvokeAsync(async () =>
+             {
+                 await OnValuesChanged.InvokeAsync(new()
+                     {
+                         IsMouseUp = pos.IsMouseUp,
+                         Start = StartValue,
+                         End = EndValue
+                     });
+                 await invokeValuesChanged();
+             });
+        }
+
+    }
+
+    async Task invokeValuesChanged()
+    {
+        await OnStartValueChanged.InvokeAsync(StartValue);
+        await OnEndValueChanged.InvokeAsync(EndValue);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+
+        await validateMinMaxStartEnd();
+
+        _objRef = DotNetObjectReference.Create<AdjRangeSlider>(this);
+        _interop = new AdjRangeSliderJsInterop(_js, _objRef);
+
+        timer = new Timer(TimerCallbackMethod, null, Timeout.Infinite, Timeout.Infinite);
+
+    }
+
+    async Task validateMinMaxStartEnd()
+    {
+        bool isChangedStart = false;
+        bool isChangedEnd = false;
+        /*check Min Max*/
+        if (StartValue < MinValue) { StartValue = MinValue; isChangedStart = true; }
+        if (EndValue > MaxValue) { EndValue = MaxValue; isChangedEnd = true; }
+        /*check Start End*/
+        if (StartValue > EndValue) { StartValue = EndValue; isChangedStart = true; }
+
+        if (isChangedStart) await OnStartValueChanged.InvokeAsync(StartValue);
+        if (isChangedEnd) await OnEndValueChanged.InvokeAsync(EndValue);
+
+        if (isChangedStart || isChangedEnd)
+        {
+            await OnValuesChanged.InvokeAsync(new()
+                {
+                    IsMouseUp = pos.IsMouseUp,
+                    Start = StartValue,
+                    End = EndValue
+                });
+            previousStartValue = StartValue;
+            previousEndValue = EndValue;
+        }
+    }
+    int previousStartValue = 0;
+    int previousEndValue = 0;
+    protected override async Task OnParametersSetAsync()
+    {
+        bool isChanged = false;
+        await validateMinMaxStartEnd();
+
+
+        if (StartValue != previousStartValue)
+        {
+            await OnStartValueChanged.InvokeAsync(StartValue);
+            isChanged = true;
+        }
+        if (EndValue != previousEndValue)
+        {
+            await OnEndValueChanged.InvokeAsync(EndValue);
+            isChanged = true;
+        }
+        previousStartValue = StartValue;
+        previousEndValue = EndValue;
+
+        if (isChanged && isInitialized)
+        {
+
+            await _interop.UpdateRange(
+                        ParentSelector,
+                        StartValue,
+                        EndValue
+                        );
+        }
+        switch (SliderType)
+        {
+            case EnSliderType.SingleStartMin:
+                EndValue = MaxValue;
+                break;
+            case EnSliderType.SingleStartMax:
+                StartValue = MinValue;
+                break;
+        }
+
+        lastValue = [StartValue, EndValue];
+
+
+
+
+        await base.OnParametersSetAsync();
+    }
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && _interop != null)
+        {
+            UseDefaultHandleSvg??=true;
+
+            if (UseDefaultHandleSvg==true)  {
+                HandleStart ??= new HandleDefinition(useDefaultIcons: true, heightInPx: UseDefaultHandleSvgHeight, color: UseDefaultHandleSvgColor);
+                HandleEnd ??= new HandleDefinition(useDefaultIcons: true, heightInPx: UseDefaultHandleSvgHeight, color: UseDefaultHandleSvgColor);
+            }
+
+            HandleStart?.SetCssVarList(cssVarList, HandleDefinition.EnStartEnd.Start, HandlePosition);
+            HandleEnd?.SetCssVarList(cssVarList, HandleDefinition.EnStartEnd.End, HandlePosition);
+
+
+            ColorsAndDimensions?.SetCssVarList(cssVarList);
+
+            await _interop.InitDraggableWithinBounds(
+                        ParentSelector,
+                        isHandleLeft: isHandleLeft,
+                        isHandleRight: isHandleRight,
+                        stepValue: Step ?? 0,
+                        startValue: StartValue,
+                        endValue: EndValue,
+                        minValue: MinValue,
+                        maxValue: MaxValue,
+                        cssVarList: cssVarList
+                        );
+
+            isInitialized = true;
+        }
+    }
+
+
+    public struct ValueRange
+    {
+        public int Start;
+        public int End;
+    }
+
+    public struct Range
+    {
+        public double Start;
+        public double End;
+    }
+
+
+    Range GetPercent()
+    {
+        double range = MaxValue - MinValue;
+        double _start = StartValue - MinValue;
+        double _end = EndValue - MinValue;
+
+
+        Range percent = new();
+        percent.Start = InitFullrange ? 0 : ((_start / (double)range) * 100);
+        percent.End = InitFullrange ? 100 : ((_end / (double)range) * 100);
+        return percent;
+
+    }
+
+
+    public struct Position
+    {
+        public bool IsMouseUp;
+        public double Start;
+        public double End;
+    }
+
+    [JSInvokable]
+    public async Task OnMouseMoveCallback(string start, string end)
+    {
+        pos.IsMouseUp = false;
+        pos.Start = double.Parse(start, System.Globalization.CultureInfo.InvariantCulture);
+        pos.End = double.Parse(end, System.Globalization.CultureInfo.InvariantCulture);
+        // StateHasChanged();
+        timer.Change(UpdateMillisecond, Timeout.Infinite);
+        await OnMouseMove.InvokeAsync(pos);
+    }
+
+    [JSInvokable]
+    public async Task OnMouseUpCallback(string start, string end)
+    {
+        pos.IsMouseUp = true;
+        pos.Start = double.Parse(start, System.Globalization.CultureInfo.InvariantCulture);
+        pos.End = double.Parse(end, System.Globalization.CultureInfo.InvariantCulture);
+
+        timer.Change(0, Timeout.Infinite);
+        // StateHasChanged();
+        await OnMouseUp.InvokeAsync(pos);
+
+    }
+
+}
