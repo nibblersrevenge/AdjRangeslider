@@ -3,12 +3,19 @@
 
 Customizable blazor-component with one or two handles respectively minimum and/or maximum value.
 
-![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangeSliderDemo1.gif)
-<br><br>
-![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangesliderDemoExclude.gif)
-<br><br>
-![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangesliderDemoDatabinding1.gif)
-<br><br>
+
+
+# Adj-Blazor-Range-Slider
+
+Customizable blazor-component with one or two handles respectively minimum and/or maximum value.
+
+Demo website: [https://adj-blazor-rangeslider-demo.adjustment.de/](https://adj-blazor-rangeslider-demo.adjustment.de/)
+
+...
+![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangeSliderDemo1.gif){width=300px}
+![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangesliderDemoExclude.gif){width=300px}
+![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangesliderDemoDatabinding1.gif){width=300px}
+
 
 ## Features
 
