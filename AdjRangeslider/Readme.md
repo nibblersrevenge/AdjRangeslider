@@ -11,7 +11,7 @@ Customizable blazor-component with one or two handles respectively minimum and/o
 
 Demo website: [https://adj-blazor-rangeslider-demo.adjustment.de/](https://adj-blazor-rangeslider-demo.adjustment.de/)
 
-...
+
 ![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangeSliderDemo1.gif)
 ![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangesliderDemoExclude.gif)
 ![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangesliderDemoDatabinding1.gif)
