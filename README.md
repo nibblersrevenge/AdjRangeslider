@@ -34,7 +34,7 @@ Customizable blazor-component with one or two handles respectively minimum and/o
 | `SliderType` | `EnSliderType` | Range, SingleStartMin, SingleStartMax   |
 | `UseDefaultHandleSvgColor` | `string` | color of the default handels if UseDefaultHandleSvg=true.  |
 | `UseDefaultHandleSvgHeight` | `int` | height of default handels in pixel (width is calculated) if UseDefaultHandleSvg=true.  |
-| `UpdateMillisecond` | `int` | defines the time in which the StartValue end EndValue is updated when user stops moveing the slider without MouseUp |
+| `UpdateMillisecond` | `int` | defines the time in which the StartValue end EndValue is updated when user stops moving the slider without MouseUp |
 | `ColorsAndDimensions` | `ColorsAndDimensions` | defines the basic appearance of the slider => ColorsAndDimensions below |
 | `HandleStart` | `HandleDefinition` | defines the  appearance of the left handle => HandleDefinition below |
 | `HandleEnd` | `HandleDefinition` | defines the  appearance of the right handle => HandleDefinition below |
@@ -90,9 +90,9 @@ Customizable blazor-component with one or two handles respectively minimum and/o
 | :-------- | :------- | :-------------------------------- |
 | `OnMouseMove`    | `Position`|  is triggered when the slider is moved. |
 | `OnMouseUp`      |`Position`|  is triggered on mouse up. |
-| `OnValueChanged` |`Position` |  is triggered on MouseUp or when user stops moveing the slider and UpdateMillisecond has expired. <br>args contain Start end Endvalue|
-| `OnStartValueChanged`|`Position`|  is triggered on MouseUp or when user stops moveing the slider and UpdateMillisecond has expired. <br>args contain Start end Endvalue|
-| `OnEndValueChanged`|`Position`|  is triggered on MouseUp or when user stops moveing the slider and UpdateMillisecond has expired. <br>args contain Start end Endvalue|
+| `OnValueChanged` |`Position` |  is triggered on MouseUp or when user stops moving the slider and UpdateMillisecond has expired. <br>args contain Start end Endvalue|
+| `OnStartValueChanged`|`Position`|  is triggered on MouseUp or when user stops moving the slider and UpdateMillisecond has expired. <br>args contain Start end Endvalue|
+| `OnEndValueChanged`|`Position`|  is triggered on MouseUp or when user stops moving the slider and UpdateMillisecond has expired. <br>args contain Start end Endvalue|
 
 ## Features
 
@@ -122,7 +122,7 @@ Customizable blazor-component with one or two handles respectively minimum and/o
 | `Step` | `int` | defines the step of possible values.   |
 | `UseDefaultHandleSvgColor` | `string` | color of the default handels if UseDefaultHandleSvg=true.  |
 | `UseDefaultHandleSvgHeight` | `int` | height of default handels in pixel (width is calculated) if UseDefaultHandleSvg=true.  |
-| `UpdateMillisecond` | `int` | defines the time in which the StartValue end EndValue is updated when user stops moveing the slider without MouseUp |
+| `UpdateMillisecond` | `int` | defines the time in which the StartValue end EndValue is updated when user stops moving the slider without MouseUp |
 | `ColorsAndDimensions` | `ColorsAndDimensions` | defines the basic appearance of the slider => ColorsAndDimensions below |
 | `HandleStart` | `HandleDefinition` | defines the  appearance of the left handle => HandleDefinition below |
 | `HandleEnd` | `HandleDefinition` | defines the  appearance of the right handle => HandleDefinition below |
@@ -204,7 +204,7 @@ Customizable blazor-component with one or two handles respectively minimum and/o
 | :-------- | :------- | :-------------------------------- |
 | `OnMouseMove`    | `Position`|  is triggered when the slider is moved. |
 | `OnMouseUp`      |`Position`|  is triggered on mouse up. |
-| `OnValueChanged` |`Position` |  is triggered on MouseUp or when user stops moveing the slider and UpdateMillisecond has expired. <br>args contain Start end Endvalue|
-| `OnStartValueChanged`|`Position`|  is triggered on MouseUp or when user stops moveing the slider and UpdateMillisecond has expired. <br>args contain Start end Endvalue|
-| `OnEndValueChanged`|`Position`|  is triggered on MouseUp or when user stops moveing the slider and UpdateMillisecond has expired. <br>args contain Start end Endvalue|
+| `OnValueChanged` |`Position` |  is triggered on MouseUp or when user stops moving the slider and UpdateMillisecond has expired. <br>args contain Start end Endvalue|
+| `OnStartValueChanged`|`Position`|  is triggered on MouseUp or when user stops moving the slider and UpdateMillisecond has expired. <br>args contain Start end Endvalue|
+| `OnEndValueChanged`|`Position`|  is triggered on MouseUp or when user stops moving the slider and UpdateMillisecond has expired. <br>args contain Start end Endvalue|
 
