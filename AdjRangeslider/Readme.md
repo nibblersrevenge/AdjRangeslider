@@ -1,11 +1,4 @@
-﻿
-# Adj-Blazor-Range-Slider
-
-Customizable blazor-component with one or two handles respectively minimum and/or maximum value.
-
-
-
-# Adj-Blazor-Range-Slider
+﻿# Adj-Blazor-Range-Slider
 
 Customizable blazor-component with one or two handles respectively minimum and/or maximum value.
 
@@ -25,6 +18,8 @@ Demo website: [https://adj-blazor-rangeslider-demo.adjustment.de/](https://adj-b
 - Adjustable update delay for database access or similar
 - Custom images/border/sizes for slider-handles
 - Adjustable step-value
+- Dont't forget: @rendermode InteractiveServer
+- Demo website: [https://adj-blazor-rangeslider-demo.adjustment.de/](https://adj-blazor-rangeslider-demo.adjustment.de/)
 
 
 
