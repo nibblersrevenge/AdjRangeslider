@@ -2,13 +2,6 @@
 
 Customizable blazor-component with one or two handles respectively minimum and/or maximum value.
 
-Demo website: [https://adj-blazor-rangeslider-demo.adjustment.de/](https://adj-blazor-rangeslider-demo.adjustment.de/)
-
-
-![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangeSliderDemo1.gif)
-![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangesliderDemoExclude.gif)
-![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangesliderDemoDatabinding1.gif)
-
 
 ## Features
 
@@ -20,6 +13,10 @@ Demo website: [https://adj-blazor-rangeslider-demo.adjustment.de/](https://adj-b
 - Adjustable step-value
 - Dont't forget: @rendermode InteractiveServer
 - Demo website: [https://adj-blazor-rangeslider-demo.adjustment.de/](https://adj-blazor-rangeslider-demo.adjustment.de/)
+
+![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangeSliderDemo2.gif)
+![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangesliderDemoExclude2.gif)
+![Range Slider Demo](https://raw.githubusercontent.com/nibblersrevenge/AdjRangeslider/master/AdjRangesliderDemo/RangesliderDemoDatabinding2.gif)
 
 
 
