@@ -103,6 +103,7 @@ Customizable blazor-component with one or two handles respectively minimum and/o
 - Adjustable update delay for database access or similar
 - Custom images/border/sizes for slider-handles
 - Adjustable step-value
+- Dont't forget: @rendermode InteractiveServer
 
 
 
@@ -140,6 +141,9 @@ Customizable blazor-component with one or two handles respectively minimum and/o
 ***Coonstructor of ColorsAndDimensions helps:*** 
 
 ```razor
+
+@rendermode InteractiveServer
+
      <AdjRangeSlider 
         ColorsAndDimensions= @(new ColorsAndDimensions(
                                 selectedRangeColor:"#0f0",
@@ -171,6 +175,9 @@ Customizable blazor-component with one or two handles respectively minimum and/o
 ***Coonstructor of HandleDefinition helps:***
 
 ```razor
+
+@rendermode InteractiveServer
+
     <AdjRangeSlider 
             HandleStart="@(new HandleDefinition(
                             backgroundUrl: "https://www.motorradtest.de/images/avatar/50/chris.webp"

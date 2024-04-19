@@ -5,7 +5,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdjRangeSlider;
+namespace Adj.Blazor.RangeSlider;
 
 public class HandleDefinition
 {
