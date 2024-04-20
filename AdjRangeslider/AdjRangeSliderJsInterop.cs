@@ -5,7 +5,7 @@ namespace Adj.Blazor.RangeSlider;
 public class AdjRangeSliderJsInterop : IAsyncDisposable
 {
     static string _timestamp;
-    static string timestamp { get { _timestamp ??= System.Diagnostics.Debugger.IsAttached? DateTime.Now.Ticks.ToString():"v=v1"; return _timestamp; } }
+    static string timestamp { get { _timestamp ??= System.Diagnostics.Debugger.IsAttached? DateTime.Now.Ticks.ToString(): "v=0.8.0.3"; return _timestamp; } }
     private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 
     private readonly DotNetObjectReference<AdjRangeSlider> dotNetObj;

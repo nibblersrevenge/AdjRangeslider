@@ -20,8 +20,7 @@
 
     protected override void OnInitialized()
     {
-        // _objRef = DotNetObjectReference.Create<AdjSliderHandle>(this);
-        // _interop = new AdjRangeSliderJsInterop(_js, _objRef);
+
      }
 
     public struct Position
@@ -37,45 +36,6 @@
     [Parameter]
     public EventCallback<Position> OnMouseUp { get; set; }
 
-    // //JS Events
-    // [JSInvokable]
-    // public async Task OnMouseMoveCallback(int left, int top, int maxX, int maxY)
-    // {
-    //     pos.CssAddon = CssAddon;
-    //     pos.Left = left;
-    //     pos.Top = top;
-    //     pos.MaxX = maxX;
-    //     pos.MaxY = maxY;
-    //     await OnMouseMove.InvokeAsync(pos);
-    // }
-    // //JS Events
-    // [JSInvokable]
-    // public async Task OnMouseUpCallback(int left, int top)
-    // {
-    //     await OnMouseUp.InvokeAsync(new()
-    //         {
-    //             CssAddon = CssAddon,
-    //             Left = left,
-    //             Top = top
-    //         });
-    // }
-    // protected override async Task OnAfterRenderAsync(bool firstRender)
-    // {
-    //     if (firstRender &&
-    //         _interop != null)
-    //     {
-    //         await _interop.InitDraggableWithinBounds(
-    //             $"{ParentSelector} .{CssAddon.Replace(".", "")}",
-    //               ParentSelector,
-    //               denyVertical: true,
-    //              Left: PosLeft,
-    //              Top: PosTop
-    //         );
-    //         // await _interop.InitDraggable(
-    //         //     ".ddddddd1",
-    //         //       ".eeeeeee1");
-    //     }
-    //     // return base.OnAfterRenderAsync(firstRender);
-    // }
+
 
 }
