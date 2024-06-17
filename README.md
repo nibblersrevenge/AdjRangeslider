@@ -64,6 +64,10 @@ Customizable blazor-component with one or two handles respectively minimum and/o
 
 ***Coonstructor of HandleDefinition helps:***
 
+```razor
+
+@rendermode InteractiveServer
+
     <AdjRangeSlider 
             HandleStart="@(new HandleDefinition(
                             backgroundUrl: "https://www.motorradtest.de/images/avatar/50/chris.webp"
@@ -83,7 +87,7 @@ Customizable blazor-component with one or two handles respectively minimum and/o
 
          [ --- ]
          />
-
+```
 # Events
 
 | Parameter | Type     |   Description                       |
