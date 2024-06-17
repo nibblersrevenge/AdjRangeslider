@@ -99,7 +99,7 @@ export async function initDraggableWithinBounds(
     o.oHtm.childRange.addEventListener("touchstart", (e) => { o.initTouchStart(e, o.oHtm.childRange); });
     o.oHtm.childRange.addEventListener('touchend', (e) => { o.handleMouseUp(e); var t = 1; });
 
-
+     
     o.oHtm.childRangeBg.addEventListener('mousedown', o.handleMouseDownRangeBg);
     o.oHtm.childRangeBg.addEventListener('touchmove', o.handleMove);
     o.oHtm.childRangeBg.addEventListener("touchstart", (e) => { o.initTouchStart(e, o.oHtm.childRangeBg); });
