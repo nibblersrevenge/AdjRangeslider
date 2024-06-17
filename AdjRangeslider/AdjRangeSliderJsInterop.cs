@@ -1,16 +1,30 @@
 using Microsoft.JSInterop;
 
+using System.Reflection;
+
 namespace Adj.Blazor.RangeSlider;
 
 public class AdjRangeSliderJsInterop : IAsyncDisposable
 {
     static string _timestamp;
-    static string timestamp { get { _timestamp ??= System.Diagnostics.Debugger.IsAttached? DateTime.Now.Ticks.ToString(): "v=0.8.0.3"; return _timestamp; } }
+    static string timestamp
+    {
+        get
+        {
+            _timestamp ??= System.Diagnostics.Debugger.IsAttached ? 
+                             $"v1={DateTime.Now.Ticks.ToString()}-{Assembly.GetAssembly(typeof(AdjRangeSlider)).GetName().Version}" :
+                             $"v1={Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version}"; return _timestamp;
+        }
+    }
+
+
+
     private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 
     private readonly DotNetObjectReference<AdjRangeSlider> dotNetObj;
     public AdjRangeSliderJsInterop(IJSRuntime jsRuntime, DotNetObjectReference<AdjRangeSlider> dotNetObj)
     {
+
         this.dotNetObj = dotNetObj;
         moduleTask = new(
             () => jsRuntime.InvokeAsync<IJSObjectReference>(

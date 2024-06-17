@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Adj.Blazor.RangeSlider" Version="0.8.0.1" />
+    <PackageReference Include="Adj.Blazor.RangeSlider" Version="0.8.1.0" />
   </ItemGroup>
+
+  <!--<ItemGroup>
+    <ProjectReference Include="..\AdjRangeslider\Adj.Blazor.RangeSlider.csproj" />
+  </ItemGroup>-->
 
 </Project>
