@@ -12,8 +12,8 @@ public class AdjRangeSliderJsInterop : IAsyncDisposable
         get
         {
             _timestamp ??= System.Diagnostics.Debugger.IsAttached ? 
-                             $"v1={DateTime.Now.Ticks.ToString()}-{Assembly.GetAssembly(typeof(AdjRangeSlider)).GetName().Version}" :
-                             $"v1={Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version}"; return _timestamp;
+                             $"v1={Assembly.GetAssembly(typeof(AdjRangeSlider)).GetName().Version}-{DateTime.Now.Ticks.ToString()}" :
+                             $"v1={Assembly.GetAssembly(typeof(AdjRangeSlider)).GetName().Version}"; return _timestamp;
         }
     }
 
