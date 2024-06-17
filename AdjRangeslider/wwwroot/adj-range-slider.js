@@ -285,7 +285,7 @@ export async function initDraggableWithinBounds(
             } else if (e.touches && e.touches.length > 0) {
                 return e.touches[0].clientX;
             } else {
-                return touchStartClientX;
+                return o.touchStartClientX;
             }
             
         }
