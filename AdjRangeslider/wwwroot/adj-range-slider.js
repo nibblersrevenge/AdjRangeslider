@@ -104,12 +104,11 @@ export async function initDraggableWithinBounds(
     o.oHtm.childRangeBg.addEventListener('touchmove', o.handleMove);
     o.oHtm.childRangeBg.addEventListener("touchstart", (e) => { o.initTouchStart(e, o.oHtm.childRangeBg); });
     o.oHtm.childRangeBg.addEventListener('touchend', (e) => { o.handleMouseUp(e); var t = 1; });
-
-
+    
     if (o.isHandleLeft) {
         o.oHtm.childStart.addEventListener('mousedown', o.handleMouseDownStart);
         o.oHtm.childStart.addEventListener('touchmove', o.handleMove);
-        o.oHtm.childStart.addEventListener("touchstart", (e) => { initTouchStart(e, o.oHtm.childStart); });
+        o.oHtm.childStart.addEventListener("touchstart", (e) => { o.initTouchStart(e, o.oHtm.childStart); });
         o.oHtm.childStart.addEventListener('touchend', (e) => { o.handleMouseUp(e); var t = 1; });
     }
     if (o.isHandleRight) {
